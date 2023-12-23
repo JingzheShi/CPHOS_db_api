@@ -98,7 +98,7 @@ class GetToBeVerifiedTeacherInfoByFlexibleWechatName(CustomOperation):
             print(e)
             raise e
 
-class GetTeacherNotViewdProblemNumber(CustomOperation):
+class GetTeacherNotViewedProblemNumber(CustomOperation):
     def __init__(self,TeacherId:int):
         self.TeacherId = TeacherId
         self.MySQLCommand = None
@@ -121,7 +121,8 @@ class GetTeacherNotViewdProblemNumber(CustomOperation):
                 returned = cursor.fetchall()
                 return returned[0][0], teacher_type # This is an int number, and an int number. The first int is number of problems not viewed, the second is the teacher type.
             else:
-                raise Exception("No tests are happening!")
+                print("No activate exam.")
+                return 0, teacher_type
         except Exception as e:
             print(e)
             raise e
